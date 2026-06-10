@@ -49,7 +49,7 @@ your assistant, and answer. Done.
 
 **Claude Code:**
 ```bash
-git clone https://github.com/<your-org>/interview-kit.git
+git clone https://github.com/billy-mangaroa/interview-kit.git
 cp -r interview-kit/claude-code/skills/interview ~/.claude/skills/
 # then in any project:  /interview
 ```

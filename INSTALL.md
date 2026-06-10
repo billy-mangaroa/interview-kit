@@ -28,7 +28,7 @@ For mechanical enforcement, use the Claude Code track.
 
 ### 1. Install the skill
 ```bash
-git clone https://github.com/<your-org>/interview-kit.git
+git clone https://github.com/billy-mangaroa/interview-kit.git
 cp -r interview-kit/claude-code/skills/interview ~/.claude/skills/
 ```
 Now `/interview` works in any project. Try it: open a project and type `/interview`.

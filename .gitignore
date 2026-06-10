@@ -1,0 +1,12 @@
+# secrets (Constitution §0.1)
+.env
+.env.*
+!.env.example
+
+# os / editor
+.DS_Store
+*.log
+node_modules/
+
+# landing build artifacts
+landing/.vercel/

@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Base Constitution §0.1 — secrets never touch git. Installed by interview/enforcement.
+# Blocks a commit if gitleaks finds a credential in the staged changes.
+# Marker: interview-enforcement-precommit (used by install-guards.sh to detect itself)
+
+if command -v gitleaks >/dev/null 2>&1; then
+  if ! gitleaks protect --staged --redact --no-banner; then
+    echo ""
+    echo "⛔ gitleaks found a secret in your staged changes (Constitution §0.1). Commit BLOCKED."
+    echo "   • Remove the secret and move it to .env / platform env / Keychain."
+    echo "   • False positive? Add a narrow rule to .gitleaksignore (path:line:rule)."
+    echo "   • Already committed in history? STOP — rotate + purge history + invalidate at provider."
+    exit 1
+  fi
+else
+  echo "⚠ gitleaks not installed — secret scan SKIPPED. Install it: brew install gitleaks"
+fi

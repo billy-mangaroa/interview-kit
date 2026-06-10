@@ -1,0 +1,18 @@
+# Base Constitution §0.1 — server-side secret scan. The pre-commit hook can be skipped
+# (--no-verify); CI cannot. This catches anything that slipped past the local hook.
+name: gitleaks
+on:
+  push:
+  pull_request:
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # full history so gitleaks can scan every commit
+      - name: gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          # Free for personal/public repos. For a GitHub *org*, set GITLEAKS_LICENSE secret.
+          GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}

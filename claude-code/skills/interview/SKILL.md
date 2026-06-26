@@ -37,8 +37,21 @@ correct — flag anything that may be stale. An agency that already knows the cl
 the basics; it confirms and goes deeper.
 
 ### 2. Interview — hybrid delivery, adaptive drill within the tier
-Work the **14 facets in `facets.md`**, scoped to the weight tier. Use structured multiple-choice
-for forks and decisions; conversational prose when drilling intent/vision/nuance. **Drill rule:**
+Work the **14 facets in `facets.md`**, scoped to the weight tier. Delivery:
+
+**Ask with the host's native question UI.** For every fork or decision, ask using the structured
+question tool of whatever assistant you're running in — and fall back to tight numbered prose when
+there isn't one:
+- **Claude Code** → the native **`AskUserQuestion`** tool (1–4 multiple-choice questions, single- or
+  multi-select, with an "Other" free-text escape hatch).
+- **Codex** → Codex's native user-input / approval prompt; if no structured question tool is
+  exposed, ask 1–4 concise numbered questions in plain text.
+- **Pi** → the built-in **`ask_user`** tool (the `ask-user` extension — pi's `AskUserQuestion`
+  equivalent: 1–4 clickable questions, `multiSelect`, `allowOther`).
+- **Any other assistant / plain chat** → 1–4 numbered plain-text questions per turn.
+
+Use **conversational prose** (not the picker) when drilling intent/vision/nuance — the structured
+tool is for decisions, not the soulful stuff. **Drill rule:**
 when an answer is thin on a high-stakes facet, follow up until it has bedrock. Don't accept "to
 make it good" — push to *what does good look like, measured how, for whom, by when*. Pace it: move
 facet by facet, don't dump all 14 at once.
